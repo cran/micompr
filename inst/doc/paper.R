@@ -1,4 +1,4 @@
-## ----pphpc1, eval = FALSE------------------------------------------------
+## ----pphpc1, eval = FALSE-----------------------------------------------------
 #  # Load library
 #  library(micompr)
 #  
@@ -36,7 +36,7 @@
 #                          lvls = c("NLOK","JEXDIF"))),
 #                concat = T)
 
-## ----pphpc2, eval = FALSE------------------------------------------------
+## ----pphpc2, eval = FALSE-----------------------------------------------------
 #  toLatex(mic,
 #          booktabs = T,
 #          data_show = c("npcs-1", "mnvp-1", "parp-1", "scoreplot"),
@@ -48,7 +48,7 @@
 #                          "the PPHPC model against three configurations",
 #                          "of a parallel Java implementation."))
 
-## ----sunspot1, results = 'hide', warning = FALSE-------------------------
+## ----sunspot1, results = 'hide', warning = FALSE------------------------------
 # Load library
 library(micompr)
 
@@ -65,16 +65,16 @@ groups <- factor(c(rep("A", 10), rep("B", 10)))
 # Compare the two groups, use 9 PCs for MANOVA
 cmp <- cmpoutput("SunSpots", 9, m, groups)
 
-## ----sunspot2, results = 'markup', warning = FALSE-----------------------
+## ----sunspot2, results = 'markup', warning = FALSE----------------------------
 cmp
 
-## ----sunspot3, results = 'markup', warning = FALSE-----------------------
+## ----sunspot3, results = 'markup', warning = FALSE----------------------------
 assumptions(cmp)
 
 ## ----sunspot4, fig.show = 'asis', fig.env = 'figure', fig.cap = 'Plots produced by sunspots example.'----
 plot(cmp)
 
-## ----saugeen1, results = 'markup', warning = FALSE-----------------------
+## ----saugeen1, results = 'markup', warning = FALSE----------------------------
 # Load libraries
 library(micompr)
 library(deseasonalize)
@@ -108,16 +108,16 @@ groups <- factor(c(rep("A", 30), rep("B", 30)))
 # Compare
 cmp <- cmpoutput("SaugeenFlow", 0.9, saugdata, groups)
 
-## ----saugeen2, results = 'markup', warning = FALSE-----------------------
+## ----saugeen2, results = 'markup', warning = FALSE----------------------------
 cmp
 
-## ----saugeen3, results = 'markup', warning = FALSE-----------------------
+## ----saugeen3, results = 'markup', warning = FALSE----------------------------
 assumptions(cmp)
 
 ## ----saugeen4, fig.show = 'asis', fig.env = 'figure', fig.cap = 'Plots produced by the Saugeen river flow example.'----
 plot(cmp)
 
-## ----derma1, eval = FALSE------------------------------------------------
+## ----derma1, eval = FALSE-----------------------------------------------------
 #  # Load libraries
 #  library(bmp)
 #  library(micompr)
@@ -177,7 +177,7 @@ plot(cmp)
 #                                RGB = rgbimgs[grps != 1, ]),
 #                    obs_lvls = factor(grps[grps != 1])))))
 
-## ----derma2, eval = FALSE------------------------------------------------
+## ----derma2, eval = FALSE-----------------------------------------------------
 #  toLatex(mic,
 #          booktabs = T,
 #          data_show = c("parp-1", "nparp-1", "scoreplot"),
