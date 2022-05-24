@@ -1,7 +1,8 @@
-<!--[![Build Status](https://travis-ci.org/fakenmc/micompr.svg?branch=master)](https://travis-ci.org/fakenmc/micompr)-->
-[![codecov](https://codecov.io/gh/fakenmc/micompr/branch/master/graph/badge.svg)](https://codecov.io/gh/fakenmc/micompr)
+![Checks](https://github.com/nunofachada/micompr/actions/workflows/check.yml/badge.svg)
+[![codecov](https://codecov.io/gh/nunofachada/micompr/branch/master/graph/badge.svg)](https://app.codecov.io/gh/nunofachada/micompr)
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/micompr)](https://CRAN.R-project.org/package=micompr)
 ![Downloads](https://cranlogs.r-pkg.org/badges/grand-total/micompr)
+[![Documentation](https://img.shields.io/badge/docs-1.1.2-brightgreen.svg)](https://www.rdocumentation.org/packages/micompr)
 
 ### Summary
 
@@ -21,7 +22,7 @@ Install the development version from GitHub with the following command (requires
 the [devtools] package):
 
 ```R
-devtools::install_github("fakenmc/micompr")
+devtools::install_github("nunofachada/micompr")
 ```
 A stable version of the package is available on [CRAN] and can be installed with
 the following instruction:
