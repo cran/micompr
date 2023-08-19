@@ -1,4 +1,4 @@
-4169b2f68e1e851c36211e84ca8cfa6c *DESCRIPTION
+9c8e9cf4f6da87af2ad5ed83bb0d94a5 *DESCRIPTION
 339e1bb78afbfa1a454999d0fac85498 *LICENSE
 ee1d2858a8ebfd98d9e2324c9bbc180d *NAMESPACE
 92695c276dcfde4130665837b55e205b *R/assumptions.R
@@ -6,14 +6,15 @@ ee1d2858a8ebfd98d9e2324c9bbc180d *NAMESPACE
 21598d65d90775af999aab8b3dbe4466 *R/grpoutputs.R
 19a6cc12902b1d50da1eb38e411c9c4f *R/latex_tables.R
 05f209d121ef0ee97db16bee28f447e8 *R/micomp.R
-bfcf7a0e29b3145390925bfd835857ea *R/micompr.R
+250fa22e11e8af029be90bc68226efda *R/micompr-package.R
 340cda95ff71410afd3964642e0a03b0 *R/pphpc_diff.R
 71c449a007e1bddb8bb9cff40d2bbc32 *R/pphpc_noshuff.R
 8cedadfb94c5741b81c2542f790fcb3d *R/pphpc_ok.R
 726c9f29aaafff6140a650e830469b27 *R/pphpc_testvlo.R
 b8a5c2fefd85982ce74b78bcb12f8a85 *R/util.R
-837e6f71f7e8ec13a5b6e9cea84cfc41 *README.md
-6f9a3369a2e4490106ef6a1fe22d06c7 *build/vignette.rds
+93a781b2468c3f4f2d672d08dc66f83a *README.md
+7080893e02c49cd296d4424b9be55069 *build/partial.rdb
+bee857c9765ac10ae1c88840d30a67c1 *build/vignette.rds
 def6e812a9a3d9adf12cad7d3bd27048 *data/pphcp_diff.rdata
 8636a9af517f5b9690b51ea53aa52c3d *data/pphcp_noshuff.rdata
 ea567b892b5518b8a54f3150769b1818 *data/pphcp_ok.rdata
@@ -21,10 +22,10 @@ ea567b892b5518b8a54f3150769b1818 *data/pphcp_ok.rdata
 6bb68aa79eeafd36e78892f851434393 *inst/CITATION
 4b55850fbf626640da9b63e681c55ccd *inst/doc/paper.R
 87c728feb3cbda48061eb4a5ef51364f *inst/doc/paper.Rnw
-382b321df853d520d65fe3c63b5e0fa7 *inst/doc/paper.pdf
+5674bc2e3d0b3b2e4de776afab79e7ce *inst/doc/paper.pdf
 0414ff633432339c7c64f46995a5c46a *inst/doc/tolatex-examples.R
 4f17e327e3db9e21f62ce17decf57547 *inst/doc/tolatex-examples.Rnw
-d7a75647d3ef66363715af80909415f2 *inst/doc/tolatex-examples.pdf
+1138177108c878ff879ad1ad3a36c668 *inst/doc/tolatex-examples.pdf
 e9629fb2dd1f09f2be1fec4492238d29 *inst/extdata/j_ex_diff/stats400v1t8r100.tsv
 3199d132b2f6b77b81872061e8d81243 *inst/extdata/j_ex_diff/stats400v1t8r91.tsv
 14fe7fe6ae195c2a85bd4e942a5c942b *inst/extdata/j_ex_diff/stats400v1t8r92.tsv
@@ -82,7 +83,7 @@ a535b79d9fc697e196ef2f67bd92eba8 *man/assumptions_paruv.Rd
 57babc16af8761858db5635175785fb0 *man/concat_outputs.Rd
 cef1006b407ee4c7291662ddb8ba61ab *man/grpoutputs.Rd
 9fe1df0eb73dbdeb41d2210e31e73164 *man/micomp.Rd
-bdd603e2e2b548259a45aafc09a3c0f4 *man/micompr.Rd
+2c0a4675d756664f9459d39f33f657cf *man/micompr-package.Rd
 07e9880a905cf8a1c54274ca3d208bf1 *man/plot.assumptions_cmpoutput.Rd
 4ff724ae6a47205282b804962e5a0c91 *man/plot.assumptions_manova.Rd
 a3ccc5cae13bf1d97b1b336510c1c7d7 *man/plot.assumptions_micomp.Rd
