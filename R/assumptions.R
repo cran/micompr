@@ -1,4 +1,4 @@
-# Copyright (c) 2016-2021 Nuno Fachada
+# Copyright (c) 2016-2025 Nuno Fachada
 # Distributed under the MIT License (http://opensource.org/licenses/MIT)
 
 #' Parametric tests assumptions
@@ -83,8 +83,8 @@ assumptions_manova <- function(data, factors) {
       if (nobs > nvars) {
 
         assumpt$mvntest[[f]] <-
-          MVN::mvn(data[fidx, ], mvnTest = "royston",
-                   univariateTest = "SW")$multivariateNormality
+          MVN::mvn(data[fidx, ], mvn_test = "royston",
+                   univariate_test = "SW")$multivariate_normality
 
         # Keep reference of how many PCs (variables) were used for this test
         assumpt$mvntest[[f]]$npcs <- nvars
@@ -95,8 +95,8 @@ assumptions_manova <- function(data, factors) {
         # then perform test with less variables and warn the user
         assumpt$mvntest[[f]] <-
           MVN::mvn(data[fidx, 1:min(nobs - 1, nvars)],
-                   mvnTest = "royston",
-                   univariateTest = "SW")$multivariateNormality
+                   mvn_test = "royston",
+                   univariate_test = "SW")$multivariate_normality
         warning(paste("Royston test requires more observations than ",
                       "(dependent) variables (DVs). Reducing number of ",
                       "variables from ", nvars, " to ", nobs - 1," in group '",
@@ -219,7 +219,7 @@ print.assumptions_manova <- function(x, ...) {
   for (grp in names(x$mvntest)) {
     if (methods::is(x$mvntest[[grp]], "data.frame")) {
       cat("\tP-value '", grp, "': ",
-          x$mvntest[[grp]]$`p value`, "\n", sep = "")
+          x$mvntest[[grp]]$p.value, "\n", sep = "")
     } else {
       cat("\tTest not performed.\n")
     }
@@ -307,9 +307,6 @@ print.assumptions_paruv <- function(x, ...) {
 #' # (species) of the iris data
 #' plot(assumptions_manova(iris[, 1:4], iris[, 5]))
 #'
-#' # Plot the same data with logarithmic scale for p-values
-#' plot(assumptions_manova(iris[, 1:4], iris[, 5]), log = "y")
-#'
 plot.assumptions_manova <- function(x, ...) {
 
   # Was a color specified?
@@ -322,7 +319,7 @@ plot.assumptions_manova <- function(x, ...) {
   }
 
   # Get the p-values to plot
-  pvals <- sapply(x$mvntest, function(x) x$`p value`)
+  pvals <- pvalnum(sapply(x$mvntest, function(x) x$p.value))
 
   # Plot the p-values in a bar plot
   params$height <- pvals

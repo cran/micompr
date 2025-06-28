@@ -1,52 +1,52 @@
 ## ----pphpc1, eval = FALSE-----------------------------------------------------
-#  # Load library
-#  library(micompr)
-#  
-#  # Output names
-#  outputs <- c("$P^s$", "$P^w$", "$P^c$", "$\\mean{E}^s$",
-#               "$\\overline{E}^w$", "$\\overline{C}$",
-#               "$\\widetilde{A}$")
-#  
-#  # Outputs from the NetLogo implementation
-#  dir_nl_ok <- paste0(dir_data, "nl_ok")
-#  # Outputs from the Java implementation, first configuration
-#  dir_jex_ok <- paste0(dir_data, "j_ex_ok")
-#  # Outputs from the Java implementation, second configuration
-#  dir_jex_noshuff <- paste0(dir_data, "j_ex_noshuff")
-#  # Outputs from the Java implementation, third configuration
-#  dir_jex_diff <- paste0(dir_data, "j_ex_diff")
-#  
-#  # Files for model size 400, parameter set 1
-#  filez <- glob2rx("stats400v1*.txt")
-#  
-#  # Perform the three comparison cases
-#  mic <- micomp(outputs,
-#                ve_npcs = 0.75,
-#                list(list(name = "I",
-#                          folders = c(dir_nl_ok, dir_jex_ok),
-#                          files = c(filez, filez),
-#                          lvls = c("NLOK", "JEXOK")),
-#                     list(name = "II",
-#                          folders = c(dir_nl_ok, dir_jex_noshuff),
-#                          files = c(filez, filez),
-#                          lvls = c("NLOK", "JEXNS")),
-#                     list(name = "III",
-#                          folders = c(dir_nl_ok, dir_jex_diff),
-#                          files = c(filez, filez),
-#                          lvls = c("NLOK","JEXDIF"))),
-#                concat = T)
+# # Load library
+# library(micompr)
+# 
+# # Output names
+# outputs <- c("$P^s$", "$P^w$", "$P^c$", "$\\mean{E}^s$",
+#              "$\\overline{E}^w$", "$\\overline{C}$",
+#              "$\\widetilde{A}$")
+# 
+# # Outputs from the NetLogo implementation
+# dir_nl_ok <- paste0(dir_data, "nl_ok")
+# # Outputs from the Java implementation, first configuration
+# dir_jex_ok <- paste0(dir_data, "j_ex_ok")
+# # Outputs from the Java implementation, second configuration
+# dir_jex_noshuff <- paste0(dir_data, "j_ex_noshuff")
+# # Outputs from the Java implementation, third configuration
+# dir_jex_diff <- paste0(dir_data, "j_ex_diff")
+# 
+# # Files for model size 400, parameter set 1
+# filez <- glob2rx("stats400v1*.txt")
+# 
+# # Perform the three comparison cases
+# mic <- micomp(outputs,
+#               ve_npcs = 0.75,
+#               list(list(name = "I",
+#                         folders = c(dir_nl_ok, dir_jex_ok),
+#                         files = c(filez, filez),
+#                         lvls = c("NLOK", "JEXOK")),
+#                    list(name = "II",
+#                         folders = c(dir_nl_ok, dir_jex_noshuff),
+#                         files = c(filez, filez),
+#                         lvls = c("NLOK", "JEXNS")),
+#                    list(name = "III",
+#                         folders = c(dir_nl_ok, dir_jex_diff),
+#                         files = c(filez, filez),
+#                         lvls = c("NLOK","JEXDIF"))),
+#               concat = T)
 
 ## ----pphpc2, eval = FALSE-----------------------------------------------------
-#  toLatex(mic,
-#          booktabs = T,
-#          data_show = c("npcs-1", "mnvp-1", "parp-1", "scoreplot"),
-#          data_labels = c("$\\#$PCs", "MNV", "$t$-test", "PCS"),
-#          col_width = T,
-#          pvalf_params = list(minval = 1e-8, na_str = "*"),
-#          label = "tab:pphpc",
-#          caption = paste("Comparison of a NetLogo implementation of",
-#                          "the PPHPC model against three configurations",
-#                          "of a parallel Java implementation."))
+# toLatex(mic,
+#         booktabs = T,
+#         data_show = c("npcs-1", "mnvp-1", "parp-1", "scoreplot"),
+#         data_labels = c("$\\#$PCs", "MNV", "$t$-test", "PCS"),
+#         col_width = T,
+#         pvalf_params = list(minval = 1e-8, na_str = "*"),
+#         label = "tab:pphpc",
+#         caption = paste("Comparison of a NetLogo implementation of",
+#                         "the PPHPC model against three configurations",
+#                         "of a parallel Java implementation."))
 
 ## ----sunspot1, results = 'hide', warning = FALSE------------------------------
 # Load library
@@ -75,72 +75,72 @@ assumptions(cmp)
 plot(cmp)
 
 ## ----derma1, eval = FALSE-----------------------------------------------------
-#  # Load libraries
-#  library(bmp)
-#  library(micompr)
-#  
-#  # Image definitions
-#  imgs <- dir(imgfolder)
-#  nimgs <- length(imgs)
-#  npixels <- 760 * 570
-#  
-#  # Specify image groups (Common nevi, atypical nevi,
-#  # melanomas).
-#  f <- read.table(grpsfile, row.names = 1)
-#  grps <- f[order(row.names(f)), ]
-#  
-#  # Read images from disk
-#  # Use different color channels as outputs, and also
-#  # use a concatenated output
-#  rimgs <- matrix(nrow = nimgs, ncol = npixels)
-#  gimgs <- matrix(nrow = nimgs, ncol = npixels)
-#  bimgs <- matrix(nrow = nimgs, ncol = npixels)
-#  rgbimgs <- matrix(nrow = nimgs, ncol = npixels * 3)
-#  
-#  for (i in 1:nimgs) {
-#  
-#    cimg <- read.bmp(paste0(imgfolder, imgs[i]))
-#    rimgs[i, ] <- c(cimg[ , , 1])
-#    gimgs[i, ] <- c(cimg[ , , 2])
-#    bimgs[i, ] <- c(cimg[ , , 3])
-#    rgbimgs[i, ] <- c(cimg[ , , 1], cimg[ , , 2], cimg[ , , 3])
-#  
-#  }
-#  
-#  # Perform multivariate independent comparison of images
-#  mic <-
-#    micomp(outputs = c("R", "G", "B", "RGB"),
-#           ve_npcs = 0.9,
-#           comps = list(
-#             list(name = "1v2",
-#                  grpout = list(
-#                    data = list(R = rimgs[grps != 3, ],
-#                                G = gimgs[grps != 3, ],
-#                                B = bimgs[grps != 3, ],
-#                                RGB = rgbimgs[grps != 3, ]),
-#                    obs_lvls = factor(grps[grps != 3]))),
-#             list(name = "1v3",
-#                  grpout = list(
-#                    data = list(R = rimgs[grps != 2, ],
-#                                G = gimgs[grps != 2, ],
-#                                B = bimgs[grps != 2, ],
-#                                RGB = rgbimgs[grps != 2, ]),
-#                    obs_lvls = factor(grps[grps != 2]))),
-#             list(name = "2v3",
-#                  grpout = list(
-#                    data = list(R = rimgs[grps != 1, ],
-#                                G = gimgs[grps != 1, ],
-#                                B = bimgs[grps != 1, ],
-#                                RGB = rgbimgs[grps != 1, ]),
-#                    obs_lvls = factor(grps[grps != 1])))))
+# # Load libraries
+# library(bmp)
+# library(micompr)
+# 
+# # Image definitions
+# imgs <- dir(imgfolder)
+# nimgs <- length(imgs)
+# npixels <- 760 * 570
+# 
+# # Specify image groups (Common nevi, atypical nevi,
+# # melanomas).
+# f <- read.table(grpsfile, row.names = 1)
+# grps <- f[order(row.names(f)), ]
+# 
+# # Read images from disk
+# # Use different color channels as outputs, and also
+# # use a concatenated output
+# rimgs <- matrix(nrow = nimgs, ncol = npixels)
+# gimgs <- matrix(nrow = nimgs, ncol = npixels)
+# bimgs <- matrix(nrow = nimgs, ncol = npixels)
+# rgbimgs <- matrix(nrow = nimgs, ncol = npixels * 3)
+# 
+# for (i in 1:nimgs) {
+# 
+#   cimg <- read.bmp(paste0(imgfolder, imgs[i]))
+#   rimgs[i, ] <- c(cimg[ , , 1])
+#   gimgs[i, ] <- c(cimg[ , , 2])
+#   bimgs[i, ] <- c(cimg[ , , 3])
+#   rgbimgs[i, ] <- c(cimg[ , , 1], cimg[ , , 2], cimg[ , , 3])
+# 
+# }
+# 
+# # Perform multivariate independent comparison of images
+# mic <-
+#   micomp(outputs = c("R", "G", "B", "RGB"),
+#          ve_npcs = 0.9,
+#          comps = list(
+#            list(name = "1v2",
+#                 grpout = list(
+#                   data = list(R = rimgs[grps != 3, ],
+#                               G = gimgs[grps != 3, ],
+#                               B = bimgs[grps != 3, ],
+#                               RGB = rgbimgs[grps != 3, ]),
+#                   obs_lvls = factor(grps[grps != 3]))),
+#            list(name = "1v3",
+#                 grpout = list(
+#                   data = list(R = rimgs[grps != 2, ],
+#                               G = gimgs[grps != 2, ],
+#                               B = bimgs[grps != 2, ],
+#                               RGB = rgbimgs[grps != 2, ]),
+#                   obs_lvls = factor(grps[grps != 2]))),
+#            list(name = "2v3",
+#                 grpout = list(
+#                   data = list(R = rimgs[grps != 1, ],
+#                               G = gimgs[grps != 1, ],
+#                               B = bimgs[grps != 1, ],
+#                               RGB = rgbimgs[grps != 1, ]),
+#                   obs_lvls = factor(grps[grps != 1])))))
 
 ## ----derma2, eval = FALSE-----------------------------------------------------
-#  toLatex(mic,
-#          booktabs = T,
-#          data_show = c("parp-1", "nparp-1", "scoreplot"),
-#          data_labels = c("$t$-test", "$U$ test", "PCS"),
-#          pvalf_params = list(minval = 1e-8, na_str = "*"),
-#          label = "tab:ph2",
-#          caption = paste("Comparison of PH$^2$ dataset images",
-#                          "grouped by lesion type."))
+# toLatex(mic,
+#         booktabs = T,
+#         data_show = c("parp-1", "nparp-1", "scoreplot"),
+#         data_labels = c("$t$-test", "$U$ test", "PCS"),
+#         pvalf_params = list(minval = 1e-8, na_str = "*"),
+#         label = "tab:ph2",
+#         caption = paste("Comparison of PH$^2$ dataset images",
+#                         "grouped by lesion type."))
 
